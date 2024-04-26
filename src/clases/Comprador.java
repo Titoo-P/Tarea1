@@ -17,7 +17,7 @@ class Comprador {
         } while (true);
 
         if (aux != null) {
-            sonido = aux.beber();
+            sonido = aux.consumir();
         } else {
             sonido = null;
         }
