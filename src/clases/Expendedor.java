@@ -17,8 +17,8 @@ class Expendedor {
         precio = precioBebidas;
 
         for (int i = 0; i < numBebidas; i++) {
-            coca.addBebida(new CocaCola(100 + i));
-            sprite.addBebida(new Sprite(200 + i));
+            coca.add(new CocaCola(100 + i));
+            sprite.add(new Sprite(200 + i));
         }
     }
 
@@ -36,7 +36,7 @@ class Expendedor {
         Bebida auxBebida = null;
         switch (tipo) {
             case COCA:
-                auxBebida = coca.getBebida();
+                auxBebida = coca.get();
                 if (auxBebida == null) {
                     for (int i = 0; i < precio; i += 100) {
                         monVu.addMoneda(new Moneda100());
@@ -44,7 +44,7 @@ class Expendedor {
                 }
                 return auxBebida;
             case SPRITE:
-                auxBebida = sprite.getBebida();
+                auxBebida = sprite.get();
                 if (auxBebida == null) {
                     for (int i = 0; i < precio; i = i + 100) {
                         monVu.addMoneda(new Moneda100());
