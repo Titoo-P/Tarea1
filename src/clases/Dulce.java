@@ -1,4 +1,4 @@
-package src.clases.Dulces;
+package src.clases;
 
 import src.clases.Producto;
 

@@ -1,4 +1,4 @@
-package src.clases.Dulces;
+package src.clases;
 
 public class Super8 extends Dulce {
     public Super8(int x) {

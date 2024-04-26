@@ -1,15 +1,14 @@
-package src.clases.Monedas;
+package src.clases;
 
-public class Moneda1500 extends Moneda {
-
+public class Moneda1000 extends Moneda {
     // constructor vacio
-    public Moneda1500() {
+    public Moneda1000() {
         super();
     }
 
     // retorna el valor de la moneda
     public int getValor() {
-        return 1500;
+        return 1000;
     }
 
 }

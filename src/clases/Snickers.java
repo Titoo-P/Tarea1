@@ -1,4 +1,4 @@
-package src.clases.Dulces;
+package src.clases;
 
 public class Snickers extends Dulce {
     public Snickers(int x) {

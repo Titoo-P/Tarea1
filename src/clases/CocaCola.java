@@ -1,4 +1,6 @@
-package src.clases.Bebidas;
+package src.clases;
+
+import src.clases.Bebida;
 
 public class CocaCola extends Bebida {
     public CocaCola(int Serie) {

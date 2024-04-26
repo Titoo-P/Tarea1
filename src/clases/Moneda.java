@@ -1,5 +1,4 @@
-package src.clases.Monedas;
-
+package src.clases;
 import java.lang.Comparable;
 
 public abstract class Moneda implements Comparable<Moneda> {
