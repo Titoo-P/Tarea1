@@ -2,4 +2,4 @@
 
 Integrantes:
  - Martin Gonzalez Cifuentes
- - Roberto Cruz Pinto
+ - Roberto Cruz Pinto (Nota: Sin darme cuenta, estuve ocupando mi cuenta secundaria de github "Eshnaider", cualquier cambio relacionado a este usuario soy yo)
