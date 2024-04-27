@@ -5,7 +5,7 @@ import src.clases.Bebidas.*;
 
 public class Main {
     public static void main(String[] args) {
-        //Expendedor exp = new Expendedor(1, 1000);
+        Expendedor exp = new Expendedor(100);
         Moneda m = null;
         Comprador c = null;
 
