@@ -8,6 +8,7 @@ public class Main {
         Expendedor exp = new Expendedor(100);
         Moneda m = null;
         Comprador c = null;
+        System.out.println(Precios.CocaCola.getPrecio());
 
         m = new Moneda1500();
         //c = new Comprador(m, 1, exp);
