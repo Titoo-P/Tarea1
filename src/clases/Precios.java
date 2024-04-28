@@ -5,21 +5,16 @@ import src.clases.Bebidas.*;
 
 public enum Precios {
 
-    CocaCola("cocacola",700),
+    CocaCola(700),
+    Fanta(300),
+    Sprite(200),
+    Snickers(400),
+    Super8(500);
 
-    Fanta("fanta",300),
-
-    Sprite("sprite",200),
-
-    Snickers("snickers",400),
-
-    Super8("super8",500);
-
-    private final String tipo;
     private final int precio;
 
-    Precios(String tipo, int precio) {
-        this.tipo = tipo;
+    Precios(int precio) {
+
         this.precio = precio;
 
     }
@@ -28,8 +23,5 @@ public enum Precios {
         return precio;
     }
 
-    public String getTipo(){
-        return tipo;
-    }
 
 }
