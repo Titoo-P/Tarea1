@@ -1,15 +1,29 @@
-package src.clases;
-import src.clases.Monedas.*;
+package clases;
 
+import clases.Monedas.*;
+import clases.Excepciones.*;
 
-class Comprador {
+public class Comprador {
     private String sonido;
     private int vuelto;
 
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
-        Producto aux = exp.comprarBebida(m,cualBebida);
+    public Comprador(Moneda m, Precios ProdElegido, Expendedor exp)
+            throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+
+        Producto aux = null;
 
         vuelto = 0;
+
+        try {
+            aux = exp.comprarBebida(ProdElegido, m);
+        } catch (PagoIncorrectoException e) {
+            throw new PagoIncorrectoException();
+        } catch (PagoInsuficienteException e) {
+            throw new PagoInsuficienteException();
+        } catch (NoHayProductoException e) {
+            throw new NoHayProductoException();
+        }
+
         do {
             Moneda auxM = exp.getVuelto();
             if (auxM == null) {

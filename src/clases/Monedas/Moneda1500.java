@@ -1,4 +1,4 @@
-package src.clases.Monedas;
+package clases.Monedas;
 
 public class Moneda1500 extends Moneda {
 

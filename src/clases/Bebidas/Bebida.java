@@ -1,6 +1,6 @@
-package src.clases.Bebidas;
+package clases.Bebidas;
 
-import src.clases.Producto;
+import clases.Producto;
 
 public abstract class Bebida extends Producto {
 
@@ -11,4 +11,6 @@ public abstract class Bebida extends Producto {
     public String consumir() {
         return "bebida consumida";
     }
+
+    protected abstract int getPrecio();
 }

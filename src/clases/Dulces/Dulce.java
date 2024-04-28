@@ -1,6 +1,6 @@
-package src.clases.Dulces;
+package clases.Dulces;
 
-import src.clases.Producto;
+import clases.Producto;
 
 public abstract class Dulce extends Producto {
 

@@ -1,4 +1,4 @@
-package src.clases.Bebidas;
+package clases.Bebidas;
 
 public class Sprite extends Bebida {
     public Sprite(int Serie) {

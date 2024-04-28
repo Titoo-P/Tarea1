@@ -1,16 +1,17 @@
-package src.clases;
-import src.clases.Dulces.*;
-import src.clases.Monedas.*;
-import src.clases.Bebidas.*;
+package clases;
 
-class Expendedor {
+import clases.Dulces.*;
+import clases.Excepciones.*;
+import clases.Monedas.*;
+import clases.Bebidas.*;
+
+public class Expendedor {
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Bebida> fanta;
     private Deposito<Dulce> snickers;
     private Deposito<Dulce> super8;
     private Deposito<Moneda> monedasDeVuelto;
-
 
     public Expendedor(int numEspacios) {
         coca = new Deposito<>();
@@ -30,142 +31,69 @@ class Expendedor {
         }
     }
 
+    public Producto comprarBebida(Precios ProdElegido, Moneda moneda)
+            throws PagoIncorrectoException, PagoIncorrectoException, PagoIncorrectoException,
+            PagoInsuficienteException {
 
-    public Producto comprarBebida(Moneda moneda,int tipo) {
+        Producto producto = null;
+
         if (moneda == null) {
-            System.out.println("No ingresaste una moneda");
-            return null;
+            throw new PagoIncorrectoException();
         }
 
+        if (moneda.getValor() < ProdElegido.getPrecio()) {
+            monedasDeVuelto.add(moneda);
+            producto = null;
+            throw new PagoInsuficienteException();
+        } else if (moneda.getValor() > ProdElegido.getPrecio()) {
 
-        switch (tipo){
-
-            case 1: //Cocacola
-
-                //ES MENOR EL PRECIO?
-                if (Precios.CocaCola.getPrecio()>moneda.getValor()){
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No tiene suficiente dinero para una Cocacola.");
-                    return null;
-                }
-
-                //NO HAY MAS PRODUCTOS?
-                if (coca.list.isEmpty()){
-                    // ACA DEBE DECIR QUE NO HAY MAS COCACOLAS
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No hay más Cocacolas.");
-                    return null;
-                }
-
-                //SE LE DA EL VUELTO
-                int vueltoCoca = moneda.getValor() - Precios.CocaCola.getPrecio();
-                while (vueltoCoca > 0) {
-                    monedasDeVuelto.add(new Moneda100());
-                    vueltoCoca -= 100;
-                }
-                //SE LE DA EL PRODUCTO
-                return coca.get();
-
-
-            case 2: //Fanta
-
-                //ES MENOR EL PRECIO?
-                if (Precios.Fanta.getPrecio()>moneda.getValor()){
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No tiene suficiente dinero para una Fanta.");
-                    return null;
-                }
-                //NO HAY MAS PRODUCTOS?
-                if (fanta.list.isEmpty()){
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No hay más Fantas.");
-                    return null;
-                }
-
-                int vueltoFanta = moneda.getValor() - Precios.Fanta.getPrecio();
-                while (vueltoFanta > 0) {
-                    monedasDeVuelto.add(new Moneda100());
-                    vueltoFanta -= 100;
-                }
-                //SE LE DA EL PRODUCTO
-                return fanta.get();
-
-
-            case 3:
-                if (Precios.Sprite.getPrecio() > moneda.getValor()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No tiene suficiente dinero para un Sprite.");
-                    return null;
-                }
-
-                if (sprite.list.isEmpty()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No hay más Sprites.");
-                    return null;
-                }
-
-                int vueltoSprite = moneda.getValor() - Precios.Sprite.getPrecio();
-                while (vueltoSprite > 0) {
-                    monedasDeVuelto.add(new Moneda100());
-                    vueltoSprite -= 100;
-                }
-
-                return sprite.get();
-
-
-            case 4:
-                if (Precios.Snickers.getPrecio() > moneda.getValor()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No tiene suficiente dinero para un Snickers.");
-                    return null;
-                }
-
-                if (snickers.list.isEmpty()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No hay más Snickers.");
-                    return null;
-                }
-
-                int vueltoSnickers = moneda.getValor() - Precios.Snickers.getPrecio();
-                while (vueltoSnickers > 0) {
-                    monedasDeVuelto.add(new Moneda100());
-                    vueltoSnickers -= 100;
-                }
-
-                return snickers.get();
-
-
-            case 5:
-                if (Precios.Super8.getPrecio() > moneda.getValor()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No tiene suficiente dinero para un Super8.");
-                    return null;
-                }
-
-                if (super8.list.isEmpty()) {
-                    monedasDeVuelto.add(moneda);
-                    System.out.println("No hay más Super8.");
-                    return null;
-                }
-
-                int vueltoSuper8 = moneda.getValor() - Precios.Super8.getPrecio();
-                while (vueltoSuper8 > 0) {
-                    monedasDeVuelto.add(new Moneda100());
-                    vueltoSuper8 -= 100;
-                }
-
-                return super8.get();
-
-
-            default:
-                System.out.println("Producto no reconocido.");
-                return null;
-
+            int moneda100 = (moneda.getValor() - ProdElegido.getPrecio()) / 100;
+            for (int i = 0; i < moneda100; i++) {
+                Moneda vueltomon100 = new Moneda100();
+                monedasDeVuelto.add(vueltomon100);
+            }
         }
+
+        switch (ProdElegido) {
+            case CocaCola:
+                producto = coca.get();
+                break;
+            case Sprite:
+                producto = sprite.get();
+                break;
+            case Fanta:
+                producto = fanta.get();
+                break;
+            case Snickers:
+                producto = snickers.get();
+                break;
+            case Super8:
+                producto = super8.get();
+                break;
+        }
+
+        return producto;
     }
 
     public Moneda getVuelto() {
         return monedasDeVuelto.get();
+    }
+
+    public int getPrecio(Precios producto) {
+        switch (producto) {
+            case CocaCola:
+                return Precios.CocaCola.getPrecio();
+            case Sprite:
+                return Precios.Sprite.getPrecio();
+            case Fanta:
+                return Precios.Fanta.getPrecio();
+            case Snickers:
+                return Precios.Snickers.getPrecio();
+            case Super8:
+                return Precios.Super8.getPrecio();
+            default:
+                return 0;
+        }
     }
 
 }

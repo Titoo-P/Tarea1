@@ -1,4 +1,4 @@
-package src.clases.Bebidas;
+package clases.Bebidas;
 
 public class CocaCola extends Bebida {
     public CocaCola(int Serie) {

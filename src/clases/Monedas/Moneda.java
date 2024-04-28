@@ -1,4 +1,4 @@
-package src.clases.Monedas;
+package clases.Monedas;
 
 import java.lang.Comparable;
 

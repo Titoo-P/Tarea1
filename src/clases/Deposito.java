@@ -1,7 +1,4 @@
-package src.clases;
-import src.clases.Monedas.*;
-import src.clases.Dulces.*;
-import src.clases.Bebidas.*;
+package clases;
 
 import java.util.ArrayList;
 
@@ -15,7 +12,7 @@ public class Deposito<D> {
     public void add(D x) {
         list.add(x);
     }
-    
+
     // si la lista esta vacia retorna null
     public D get() {
         if (list.size() == 0) {

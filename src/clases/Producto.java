@@ -1,7 +1,4 @@
-package src.clases;
-import src.clases.Monedas.*;
-import src.clases.Dulces.*;
-import src.clases.Bebidas.*;
+package clases;
 
 public abstract class Producto {
 

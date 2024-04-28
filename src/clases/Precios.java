@@ -1,7 +1,4 @@
-package src.clases;
-import src.clases.Monedas.*;
-import src.clases.Dulces.*;
-import src.clases.Bebidas.*;
+package clases;
 
 public enum Precios {
 
@@ -22,6 +19,5 @@ public enum Precios {
     public int getPrecio() {
         return precio;
     }
-
 
 }
