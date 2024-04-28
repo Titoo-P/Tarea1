@@ -1,5 +1,35 @@
 package src.clases;
+import src.clases.Monedas.*;
 
-public abstract class Comprador {
-    // Completar...
+
+class Comprador {
+    private String sonido;
+    private int vuelto;
+
+    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
+        Producto aux = exp.comprarBebida(m,cualBebida);
+
+        vuelto = 0;
+        do {
+            Moneda auxM = exp.getVuelto();
+            if (auxM == null) {
+                break;
+            }
+            vuelto += auxM.getValor();
+        } while (true);
+
+        if (aux != null) {
+            sonido = aux.consumir();
+        } else {
+            sonido = null;
+        }
+    }
+
+    public int cuantoVuelto() {
+        return vuelto;
+    }
+
+    public String queBebiste() {
+        return sonido;
+    }
 }
