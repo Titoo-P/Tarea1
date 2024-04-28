@@ -1,28 +1,41 @@
 package src.clases;
 import src.clases.Monedas.*;
-import src.clases.Dulces.*;
-import src.clases.Bebidas.*;
+
 
 public class Main {
     public static void main(String[] args) {
-        Expendedor exp = new Expendedor(100);
-        Moneda m = null;
-        Comprador c = null;
-        Producto bd = null;
 
-        System.out.println(Precios.CocaCola.getPrecio());
 
-        bd = exp.comprarBebida(1,m);
+        Moneda m1 = new Moneda1500();
+        Moneda m2 = new Moneda500();
+        Expendedor exp1 = new Expendedor(3);
 
-        m = new Moneda1500();
-        //c = new Comprador(m, 1, exp);
+        System.out.println();
+        // Testearemos como va en todas las situaciones posibles
 
-        //System.out.println(c.queBebiste() + ", " + c.cuantoVuelto());
+        //Situacion 01: Compramos Producto de 700 con moneda de 1500 (con el dinero adecuado)
+        System.out.println("// Situacion 01: Compramos Producto de 700 con moneda de 1500 (con el dinero adecuado)");
+        Comprador Tito = new Comprador(m1,1, exp1);
+        System.out.println("que Producto compre: "+Tito.queBebiste());
+        System.out.println("Cuanto es el vuelto: "+Tito.cuantoVuelto()+"\n");
 
-        m = new Moneda1500();
-        //c = new Comprador(m, 1, exp);
+        //Situacion 02: Compramos Producto de 700 y con moneda de 500 (nos alcanza con el dinero)
+        System.out.println("// Situacion 02: Compramos Producto de 700 y con moneda de 500 (nos alcanza con el dinero)");
+        Tito = new Comprador(m2,1, exp1);
+        System.out.println("que Producto compre: "+Tito.queBebiste());
+        System.out.println("Cuanto es el vuelto: "+Tito.cuantoVuelto()+"\n");
 
-        //System.out.println(c.queBebiste() + ", " + c.cuantoVuelto());
+        // Situacion 03: Compramos producto varias veces para ver si se queda vacio
+        System.out.println("// Situacion 03: Compramos producto varias veces para ver si se queda vacio y me regresa el dinero (1500)");
+        Tito = new Comprador(m1,1, exp1);
+        System.out.println("que Producto compre: "+Tito.queBebiste());
+        System.out.println("Cuanto es el vuelto: "+Tito.cuantoVuelto());
+        Tito = new Comprador(m1,1, exp1);
+        System.out.println("que Producto compre: "+Tito.queBebiste());
+        System.out.println("Cuanto es el vuelto: "+Tito.cuantoVuelto());
+        Tito = new Comprador(m1,1, exp1);
+        System.out.println("que Producto compre: "+Tito.queBebiste());
+        System.out.println("Cuanto es el vuelto: "+Tito.cuantoVuelto()+"\n");
 
     }
 }

@@ -31,7 +31,7 @@ class Expendedor {
     }
 
 
-    public Producto comprarBebida(int tipo, Moneda moneda) {
+    public Producto comprarBebida(Moneda moneda,int tipo) {
         if (moneda == null) {
             System.out.println("No ingresaste una moneda");
             return null;
