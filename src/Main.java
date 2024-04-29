@@ -1,9 +1,22 @@
 import clases.*;
 import clases.Monedas.*;
 import clases.Excepciones.*;
-import clases.Comprador;
 
+/**
+ * @author Martin Gonzalez
+ * @author Roberto Cruz
+ * 
+ *         Clase Main que contiene el método principal para ejecutar el
+ *         programa.
+ *         Crea un expendedor y prueba diferentes escenarios de compra.
+ */
 public class Main {
+
+    /**
+     * Método principal que se ejecuta al iniciar el programa.
+     * 
+     * @param args los argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         Expendedor expendedor = new Expendedor(1);
 
@@ -14,6 +27,11 @@ public class Main {
         probarEscenarioSinProducto(expendedor);
     }
 
+    /**
+     * Método para probar el escenario de pago insuficiente.
+     * 
+     * @param exp el expendedor a utilizar.
+     */
     private static void probarEscenarioPagoInsuficiente(Expendedor exp) {
         try {
             Moneda moneda = new Moneda100();
@@ -25,6 +43,11 @@ public class Main {
         }
     }
 
+    /**
+     * Método para probar el escenario de moneda nula.
+     * 
+     * @param exp el expendedor a utilizar.
+     */
     private static void probarEscenarioMonedaNula(Expendedor exp) {
         try {
             Moneda moneda = null;
@@ -35,6 +58,11 @@ public class Main {
         }
     }
 
+    /**
+     * Método para probar el escenario de moneda igual al precio.
+     * 
+     * @param exp el expendedor a utilizar.
+     */
     private static void probarEscenarioMonedaIgualAlPrecio(Expendedor exp) {
         try {
             Moneda moneda = new Moneda500();
@@ -45,6 +73,11 @@ public class Main {
         }
     }
 
+    /**
+     * Método para probar el escenario sin producto.
+     * 
+     * @param exp el expendedor a utilizar.
+     */
     private static void probarEscenarioSinProducto(Expendedor exp) {
         try {
             Moneda moneda = new Moneda1000();

@@ -5,6 +5,11 @@ import clases.Excepciones.*;
 import clases.Monedas.*;
 import clases.Bebidas.*;
 
+/**
+ * Clase Expendedor que representa un expendedor de productos.
+ * El expendedor tiene depósitos para diferentes tipos de bebidas y dulces, y un
+ * depósito para monedas de vuelto.
+ */
 public class Expendedor {
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
@@ -13,6 +18,13 @@ public class Expendedor {
     private Deposito<Dulce> super8;
     private Deposito<Moneda> monedasDeVuelto;
 
+    /**
+     * Constructor de la clase Expendedor.
+     * Inicializa los depósitos y llena cada uno con un número especificado de
+     * productos.
+     * 
+     * @param numEspacios el número de productos para agregar a cada depósito.
+     */
     public Expendedor(int numEspacios) {
         coca = new Deposito<>();
         sprite = new Deposito<>();
@@ -27,10 +39,18 @@ public class Expendedor {
             fanta.add(new Fanta(i));
             snickers.add(new Snickers(i));
             super8.add(new Super8(i));
-
         }
     }
 
+    /**
+     * Método para comprar una bebida.
+     * 
+     * @param ProdElegido el producto que el cliente ha elegido.
+     * @param moneda      la moneda con la que el cliente paga.
+     * @return el producto comprado.
+     * @throws PagoIncorrectoException   si el pago es incorrecto.
+     * @throws PagoInsuficienteException si el pago es insuficiente.
+     */
     public Producto comprarBebida(Precios ProdElegido, Moneda moneda)
             throws PagoIncorrectoException, PagoIncorrectoException, PagoIncorrectoException,
             PagoInsuficienteException {
@@ -75,10 +95,21 @@ public class Expendedor {
         return producto;
     }
 
+    /**
+     * Método para obtener el vuelto.
+     * 
+     * @return la moneda de vuelto.
+     */
     public Moneda getVuelto() {
         return monedasDeVuelto.get();
     }
 
+    /**
+     * Método para obtener el precio de un producto.
+     * 
+     * @param producto el producto del que se quiere obtener el precio.
+     * @return el precio del producto.
+     */
     public int getPrecio(Precios producto) {
         switch (producto) {
             case CocaCola:
@@ -95,5 +126,4 @@ public class Expendedor {
                 return 0;
         }
     }
-
 }
